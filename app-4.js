@@ -1,21 +1,37 @@
 const WARMUP_MOVES = [
-  { name:"March + arm swings", note:"Easy pace for a few seconds to get warm before stretching.", area:"Full body" },
-  { name:"Shoulder rolls + arm circles", note:"Keep the shoulders relaxed. Change direction halfway through.", area:"Upper body" },
-  { name:"Cat-cow", note:"On hands and knees, slowly round your back, then gently drop the chest and lift the head.", area:"Back + core" },
-  { name:"Child's pose", note:"Sit the hips back towards your heels, stretch both arms forward and let the chest sink towards the floor.", area:"Back + shoulders" },
-  { name:"Kneeling prayer / lat stretch", note:"Kneel, put your hands together, keep your arms long and reach forward as you sit the hips back. Feel the stretch through the shoulders and sides of the back.", area:"Lats + shoulders" },
-  { name:"Thread the needle", note:"From hands and knees, slide one arm underneath the other and rotate through the upper back. Switch sides halfway through.", area:"Upper back" },
-  { name:"Downward dog pedal", note:"Push the hips up and back, then alternate bending each knee to gently stretch the calves and hamstrings.", area:"Hamstrings + calves" },
-  { name:"World's greatest stretch", note:"Step one foot forward into a long lunge, place a hand down and rotate the other arm towards the ceiling. Alternate sides.", area:"Full body" },
-  { name:"Hamstring sweeps", note:"Put one heel forward with a soft supporting knee and sweep your hands down towards the toes. Alternate sides.", area:"Hamstrings" },
-  { name:"Half-kneeling hip flexor stretch", note:"One knee down, one foot forward. Gently tuck the pelvis and move the hips forward. Switch sides halfway through.", area:"Hip flexors" }
+  { name:"Child's pose", note:"Sit the hips back towards your heels, stretch both arms forward and let the chest sink towards the floor.", area:"Back + shoulders", image:"images/childs-pose.webp" },
+  { name:"Kneeling prayer / lat stretch", note:"Kneel, put your hands together, keep your arms long and reach forward as you sit the hips back.", area:"Lats + shoulders", image:"images/kneeling-prayer-lat-stretch.webp" },
+  { name:"Cat-cow", note:"On hands and knees, slowly round your back, then gently drop the chest and lift the head.", area:"Back + core", image:"images/cat-cow.webp" },
+  { name:"Thread the needle", note:"From hands and knees, slide one arm underneath the other and rotate through the upper back. Switch sides halfway through.", area:"Upper back", image:"images/thread-the-needle.webp" },
+  { name:"Downward dog pedal", note:"Push the hips up and back, then alternate bending each knee to gently stretch the calves and hamstrings.", area:"Hamstrings + calves", image:"images/downward-dog-pedal.webp" }
 ];
 
 let warmupDuration = 180;
 let standaloneWarmupActive = false;
 
+(function addWarmupImageStyles(){
+  const style = document.createElement("style");
+  style.textContent = `
+    .warmup-row{grid-template-columns:34px 88px 1fr auto!important}
+    .warmup-thumb{width:88px;height:88px;object-fit:cover;border-radius:12px;background:#f5f5f4;border:1px solid #343a46}
+    .timer-warmup-image{display:none;justify-content:center;margin:0 0 18px}
+    .timer-warmup-image img{width:min(340px,82vw);max-height:300px;object-fit:contain;border-radius:18px;background:#f5f5f4;border:1px solid #303542}
+    @media(max-width:620px){.warmup-row{grid-template-columns:34px 76px 1fr!important}.warmup-thumb{width:76px;height:76px}.warmup-row .pill{display:none}}
+  `;
+  document.head.appendChild(style);
+
+  const exercise = $("exercise");
+  if (exercise && !document.getElementById("timerWarmupImage")) {
+    const wrap = document.createElement("div");
+    wrap.id = "timerWarmupImage";
+    wrap.className = "timer-warmup-image";
+    wrap.innerHTML = '<img id="timerWarmupImageEl" alt="Warm-up illustration">';
+    exercise.parentNode.insertBefore(wrap, exercise);
+  }
+})();
+
 function warmupSequence(seconds=warmupDuration) {
-  const moveCount = seconds <= 120 ? 4 : seconds <= 180 ? 6 : 10;
+  const moveCount = seconds <= 120 ? 3 : seconds <= 180 ? 4 : 5;
   const moves = WARMUP_MOVES.slice(0,moveCount);
   const perMove = Math.floor(seconds / moves.length);
   let remainder = seconds - perMove * moves.length;
@@ -28,6 +44,7 @@ function renderWarmupTab() {
   $("warmupList").innerHTML = sequence.map((move,i)=>`
     <div class="exercise-row warmup-row">
       <div class="num">${i+1}</div>
+      <img class="warmup-thumb" src="${escapeHtml(move.image)}" alt="${escapeHtml(move.name)}" loading="lazy">
       <div>
         <div class="ex-name">${escapeHtml(move.name)}</div>
         <div class="ex-note">${escapeHtml(move.note)}</div>
@@ -55,7 +72,8 @@ function buildStandaloneWarmupQueue() {
     label:move.name,
     target:move.note,
     duration:move.duration,
-    meta:`Warm-up movement ${i+1} of ${sequence.length}`
+    meta:`Warm-up movement ${i+1} of ${sequence.length}`,
+    image:move.image
   }));
   queue.push({phase:"done",label:"Warm-up complete",target:"Ready for your workout",duration:0,meta:""});
 }
@@ -75,7 +93,7 @@ function startStandaloneWarmup() {
   window.scrollTo(0,0);
 }
 
-// Upgrade the workout queue so its selected warm-up is guided movement-by-movement.
+// Replace the generic single warm-up block with guided picture-based movements.
 const originalBuildQueueFromWorkout = buildQueueFromWorkout;
 buildQueueFromWorkout = function() {
   originalBuildQueueFromWorkout();
@@ -89,12 +107,32 @@ buildQueueFromWorkout = function() {
     label:move.name,
     target:move.note,
     duration:move.duration,
-    meta:`Warm-up movement ${i+1} of ${sequence.length}`
+    meta:`Warm-up movement ${i+1} of ${sequence.length}`,
+    image:move.image
   }));
   queue.splice(warmupIndex,1,...steps);
 };
 
-// Keep the completion cue correct when the separate warm-up timer is used.
+function renderCurrentWarmupImage() {
+  const wrap = document.getElementById("timerWarmupImage");
+  const img = document.getElementById("timerWarmupImageEl");
+  if (!wrap || !img) return;
+  if (current?.image) {
+    img.src = current.image;
+    img.alt = current.label || "Warm-up illustration";
+    wrap.style.display = "flex";
+  } else {
+    wrap.style.display = "none";
+    img.removeAttribute("src");
+  }
+}
+
+const originalRenderTimer = renderTimer;
+renderTimer = function() {
+  originalRenderTimer();
+  renderCurrentWarmupImage();
+};
+
 const originalLoadStep = loadStep;
 loadStep = function(index,announce=true) {
   queueIndex = clamp(index,0,queue.length-1);
@@ -125,5 +163,4 @@ document.querySelectorAll(".warmup-length-btn").forEach(btn=>btn.addEventListene
 $("startWarmupBtn").addEventListener("click",startStandaloneWarmup);
 
 renderWarmupTab();
-// Rebuild the initial generated workout so it also gets the guided warm-up sequence.
 generateWorkout();
