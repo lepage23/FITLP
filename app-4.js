@@ -1,14 +1,14 @@
 const WARMUP_MOVES = [
-  { name:"March + arm swings", note:"Easy pace. Let the arms swing naturally and loosen the shoulders.", area:"Full body" },
-  { name:"Shoulder rolls + arm circles", note:"15 seconds each direction. Keep the movement smooth.", area:"Upper body" },
-  { name:"Standing torso rotations", note:"Rotate through the upper back with relaxed hips and knees.", area:"Core" },
-  { name:"Hip openers", note:"Lift one knee, circle it out, then alternate sides.", area:"Lower body" },
-  { name:"Hamstring sweeps", note:"Heel forward, soft supporting knee, sweep the hands towards the toes.", area:"Lower body" },
-  { name:"World's greatest stretch", note:"Alternate sides. Step long, reach down, then rotate the chest open.", area:"Full body" },
-  { name:"Walking knee hugs", note:"Bring the knee gently towards the chest, release, then alternate.", area:"Lower body" },
-  { name:"Reverse lunge + overhead reach", note:"Step back, reach tall, return to standing and alternate sides.", area:"Full body" },
-  { name:"Inchworms", note:"Fold forward, walk the hands to a high plank, then walk back in.", area:"Full body" },
-  { name:"Calf raises + ankle rocks", note:"Move slowly through the ankles and use a comfortable range.", area:"Lower body" }
+  { name:"March + arm swings", note:"Easy pace for a few seconds to get warm before stretching.", area:"Full body" },
+  { name:"Shoulder rolls + arm circles", note:"Keep the shoulders relaxed. Change direction halfway through.", area:"Upper body" },
+  { name:"Cat-cow", note:"On hands and knees, slowly round your back, then gently drop the chest and lift the head.", area:"Back + core" },
+  { name:"Child's pose", note:"Sit the hips back towards your heels, stretch both arms forward and let the chest sink towards the floor.", area:"Back + shoulders" },
+  { name:"Kneeling prayer / lat stretch", note:"Kneel, put your hands together, keep your arms long and reach forward as you sit the hips back. Feel the stretch through the shoulders and sides of the back.", area:"Lats + shoulders" },
+  { name:"Thread the needle", note:"From hands and knees, slide one arm underneath the other and rotate through the upper back. Switch sides halfway through.", area:"Upper back" },
+  { name:"Downward dog pedal", note:"Push the hips up and back, then alternate bending each knee to gently stretch the calves and hamstrings.", area:"Hamstrings + calves" },
+  { name:"World's greatest stretch", note:"Step one foot forward into a long lunge, place a hand down and rotate the other arm towards the ceiling. Alternate sides.", area:"Full body" },
+  { name:"Hamstring sweeps", note:"Put one heel forward with a soft supporting knee and sweep your hands down towards the toes. Alternate sides.", area:"Hamstrings" },
+  { name:"Half-kneeling hip flexor stretch", note:"One knee down, one foot forward. Gently tuck the pelvis and move the hips forward. Switch sides halfway through.", area:"Hip flexors" }
 ];
 
 let warmupDuration = 180;
