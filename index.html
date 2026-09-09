@@ -19,101 +19,133 @@
       <div class="tiny" id="savedStatus"></div>
     </div>
 
-    <div class="card">
-      <h1>What have you got?</h1>
-      <p>Type it roughly. The builder recognises dumbbells, kettlebells, a bench/box/chair and bodyweight.</p>
-      <div class="field">
-        <label for="equipmentInput">Equipment</label>
-        <textarea id="equipmentInput">1 x 15kg dumbbell, 1 x 12kg kettlebell</textarea>
-        <div class="helper">Example: “2 x 10kg dumbbells, 16kg kettlebell, bench”. Bodyweight is always available.</div>
-      </div>
-
-      <div class="grid three">
-        <div class="field">
-          <label for="durationSelect">Session length</label>
-          <select id="durationSelect">
-            <option value="15">15 mins</option>
-            <option value="20">20 mins</option>
-            <option value="30" selected>30 mins</option>
-            <option value="45">45 mins</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="focusSelect">Focus</label>
-          <select id="focusSelect">
-            <option value="full" selected>Full body</option>
-            <option value="upper">Upper body</option>
-            <option value="lower">Lower body</option>
-            <option value="armscore">Arms + core</option>
-            <option value="conditioning">Conditioning</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="warmupSelect">Warm-up</label>
-          <select id="warmupSelect">
-            <option value="0">None</option>
-            <option value="120">2 mins</option>
-            <option value="180" selected>3 mins</option>
-            <option value="300">5 mins</option>
-          </select>
-        </div>
-      </div>
-
-      <label>Workout format</label>
-      <div class="format-grid" id="formatGrid">
-        <button class="format-btn active" data-format="f45">F45-style<br>40 / 20</button>
-        <button class="format-btn" data-format="quick">Quick circuit<br>30 / 15</button>
-        <button class="format-btn" data-format="strength">Strength<br>45 / 15</button>
-        <button class="format-btn" data-format="tabata">Tabata rotate<br>20 / 10</button>
-        <button class="format-btn" data-format="emom">EMOM<br>60 sec</button>
-      </div>
-      <div class="format-desc" id="formatDesc"></div>
+    <div class="main-tabs">
+      <button type="button" class="main-tab active" id="workoutTabBtn">Workout</button>
+      <button type="button" class="main-tab" id="warmupTabBtn">Warm-up</button>
     </div>
 
-    <div class="card">
-      <h2>Personalise it</h2>
-      <div class="grid">
+    <div id="workoutTabContent">
+      <div class="card">
+        <h1>What have you got?</h1>
+        <p>Type it roughly. The builder recognises dumbbells, kettlebells, a bench/box/chair and bodyweight.</p>
         <div class="field">
-          <label for="mustInclude">Must include</label>
-          <textarea id="mustInclude" placeholder="e.g. hammer curls, regular curls, pinwheel curls">Hammer curls, regular curls, pinwheel curls</textarea>
-          <div class="chip-label">Include focus: tap to guarantee at least one station</div>
-          <div class="chip-row" id="includeFocusChips">
-            <button type="button" class="focus-chip" data-group="include" data-tag="upper">Upper body</button>
-            <button type="button" class="focus-chip" data-group="include" data-tag="arms">Arms</button>
-            <button type="button" class="focus-chip" data-group="include" data-tag="core">Core</button>
-            <button type="button" class="focus-chip" data-group="include" data-tag="lower">Lower body</button>
-            <button type="button" class="focus-chip" data-group="include" data-tag="cardio">Cardio</button>
+          <label for="equipmentInput">Equipment</label>
+          <textarea id="equipmentInput">1 x 15kg dumbbell, 1 x 12kg kettlebell</textarea>
+          <div class="helper">Example: “2 x 10kg dumbbells, 16kg kettlebell, bench”. Bodyweight is always available.</div>
+        </div>
+
+        <div class="grid three">
+          <div class="field">
+            <label for="durationSelect">Session length</label>
+            <select id="durationSelect">
+              <option value="15">15 mins</option>
+              <option value="20">20 mins</option>
+              <option value="30" selected>30 mins</option>
+              <option value="45">45 mins</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="focusSelect">Focus</label>
+            <select id="focusSelect">
+              <option value="full" selected>Full body</option>
+              <option value="upper">Upper body</option>
+              <option value="lower">Lower body</option>
+              <option value="armscore">Arms + core</option>
+              <option value="conditioning">Conditioning</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="warmupSelect">Warm-up</label>
+            <select id="warmupSelect">
+              <option value="0">None</option>
+              <option value="120">2 mins</option>
+              <option value="180" selected>3 mins</option>
+              <option value="300">5 mins</option>
+            </select>
           </div>
         </div>
-        <div class="field">
-          <label for="avoidInput">Avoid</label>
-          <textarea id="avoidInput" placeholder="e.g. avoid squats, no burpees, don't include plank"></textarea>
-          <div class="chip-label">Avoid focus: tap to remove that whole area</div>
-          <div class="chip-row" id="avoidFocusChips">
-            <button type="button" class="focus-chip" data-group="avoid" data-tag="upper">Upper body</button>
-            <button type="button" class="focus-chip" data-group="avoid" data-tag="arms">Arms</button>
-            <button type="button" class="focus-chip" data-group="avoid" data-tag="core">Core</button>
-            <button type="button" class="focus-chip" data-group="avoid" data-tag="lower">Lower body</button>
-            <button type="button" class="focus-chip" data-group="avoid" data-tag="cardio">Cardio</button>
+
+        <label>Workout format</label>
+        <div class="format-grid" id="formatGrid">
+          <button class="format-btn active" data-format="f45">F45-style<br>40 / 20</button>
+          <button class="format-btn" data-format="quick">Quick circuit<br>30 / 15</button>
+          <button class="format-btn" data-format="strength">Strength<br>45 / 15</button>
+          <button class="format-btn" data-format="tabata">Tabata rotate<br>20 / 10</button>
+          <button class="format-btn" data-format="emom">EMOM<br>60 sec</button>
+        </div>
+        <div class="format-desc" id="formatDesc"></div>
+      </div>
+
+      <div class="card">
+        <h2>Personalise it</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="mustInclude">Must include</label>
+            <textarea id="mustInclude" placeholder="e.g. hammer curls, regular curls, pinwheel curls">Hammer curls, regular curls, pinwheel curls</textarea>
+            <div class="chip-label">Include focus: tap to guarantee at least one station</div>
+            <div class="chip-row" id="includeFocusChips">
+              <button type="button" class="focus-chip" data-group="include" data-tag="upper">Upper body</button>
+              <button type="button" class="focus-chip" data-group="include" data-tag="arms">Arms</button>
+              <button type="button" class="focus-chip" data-group="include" data-tag="core">Core</button>
+              <button type="button" class="focus-chip" data-group="include" data-tag="lower">Lower body</button>
+              <button type="button" class="focus-chip" data-group="include" data-tag="cardio">Cardio</button>
+            </div>
           </div>
+          <div class="field">
+            <label for="avoidInput">Avoid</label>
+            <textarea id="avoidInput" placeholder="e.g. avoid squats, no burpees, don't include plank"></textarea>
+            <div class="chip-label">Avoid focus: tap to remove that whole area</div>
+            <div class="chip-row" id="avoidFocusChips">
+              <button type="button" class="focus-chip" data-group="avoid" data-tag="upper">Upper body</button>
+              <button type="button" class="focus-chip" data-group="avoid" data-tag="arms">Arms</button>
+              <button type="button" class="focus-chip" data-group="avoid" data-tag="core">Core</button>
+              <button type="button" class="focus-chip" data-group="avoid" data-tag="lower">Lower body</button>
+              <button type="button" class="focus-chip" data-group="avoid" data-tag="cardio">Cardio</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="check"><input type="checkbox" id="lowImpact" /> Low impact, no jumping</label>
+          <label class="check"><input type="checkbox" id="voiceCues" checked /> Say exercise names aloud</label>
         </div>
       </div>
-      <div class="row">
-        <label class="check"><input type="checkbox" id="lowImpact" /> Low impact, no jumping</label>
-        <label class="check"><input type="checkbox" id="voiceCues" checked /> Say exercise names aloud</label>
+
+      <button class="primary wide" id="generateBtn">Generate workout</button>
+
+      <div class="card hidden" id="previewCard">
+        <div class="summary" id="workoutSummary"></div>
+        <div class="workout-list" id="workoutList"></div>
+        <div id="parseNotice"></div>
+        <div class="actions">
+          <button class="ghost" id="shuffleBtn">Shuffle</button>
+          <button class="secondary" id="startWorkoutBtn">Start workout</button>
+        </div>
       </div>
     </div>
 
-    <button class="primary wide" id="generateBtn">Generate workout</button>
+    <div id="warmupTabContent" class="hidden">
+      <div class="card">
+        <div class="warmup-intro">
+          <div>
+            <h1>Warm-up & mobility</h1>
+            <p>Guided dynamic body stretches before you train. No equipment needed.</p>
+          </div>
+          <div class="warmup-badge">Bodyweight only</div>
+        </div>
 
-    <div class="card hidden" id="previewCard">
-      <div class="summary" id="workoutSummary"></div>
-      <div class="workout-list" id="workoutList"></div>
-      <div id="parseNotice"></div>
-      <div class="actions">
-        <button class="ghost" id="shuffleBtn">Shuffle</button>
-        <button class="secondary" id="startWorkoutBtn">Start workout</button>
+        <label>Warm-up length</label>
+        <div class="warmup-lengths">
+          <button type="button" class="warmup-length-btn" data-seconds="120">2 mins</button>
+          <button type="button" class="warmup-length-btn active" data-seconds="180">3 mins</button>
+          <button type="button" class="warmup-length-btn" data-seconds="300">5 mins</button>
+        </div>
+
+        <div id="warmupSummary"></div>
+        <div class="workout-list" id="warmupList"></div>
+        <div class="warmup-tip">These are dynamic stretches and mobility movements intended to get you moving before the workout, rather than long static holds.</div>
       </div>
+
+      <button class="primary wide" id="startWarmupBtn">Start warm-up</button>
     </div>
   </div>
 </section>
@@ -121,7 +153,7 @@
 <section id="timerScreen">
   <div class="timer-shell">
     <div class="timer-head">
-      <button class="mini-btn" id="backToBuilderBtn">← Workout</button>
+      <button class="mini-btn" id="backToBuilderBtn">← Back</button>
       <div class="tiny" id="timerFormat"></div>
       <button class="mini-btn" id="soundToggleBtn">Sound on</button>
     </div>
@@ -148,5 +180,6 @@
 <script src="app-1.js"></script>
 <script src="app-2.js"></script>
 <script src="app-3.js"></script>
+<script src="app-4.js"></script>
 </body>
 </html>
