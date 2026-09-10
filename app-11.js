@@ -1,6 +1,6 @@
 // FITLP whole-session progress bar and custom workout completion message.
 (function(){
-  const COMPLETION_MESSAGE = 'Fuck yeah boyo, up the RAH';
+  const COMPLETION_MESSAGE = 'Fuck yeah boyo, up the RA';
 
   const style = document.createElement('style');
   style.textContent = `
