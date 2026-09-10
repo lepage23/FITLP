@@ -27,4 +27,9 @@
   const shortcutScript = document.createElement('script');
   shortcutScript.src = 'app-13.js';
   document.body.appendChild(shortcutScript);
+
+  // Load fact wording fixes. app-16 waits until the document is initialised before wrapping the final timer renderer.
+  const factFixScript = document.createElement('script');
+  factFixScript.src = 'app-16.js?v=1';
+  document.body.appendChild(factFixScript);
 })();
