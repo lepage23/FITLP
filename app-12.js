@@ -1,6 +1,6 @@
 // FITLP custom full-workout completion voice line.
 (function(){
-  const COMPLETE_LINE = 'Work out complete, fuck yeah boyo, up the RAH';
+  const COMPLETE_LINE = 'Work out complete, fuck yeah boyo, up the raaaaah!';
   const previousLoadStep = loadStep;
 
   loadStep = function(index, announce=true){
