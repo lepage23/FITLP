@@ -42,4 +42,9 @@
   const factContrastScript = document.createElement('script');
   factContrastScript.src = 'app-19.js?v=1';
   document.body.appendChild(factContrastScript);
+
+  // Load free, attributed Wikimedia Commons imagery for all exercises and warm-ups.
+  const commonsImagesScript = document.createElement('script');
+  commonsImagesScript.src = 'app-20.js?v=1';
+  document.body.appendChild(commonsImagesScript);
 })();
