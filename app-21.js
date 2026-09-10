@@ -2,7 +2,7 @@
 (function(){
   const API = 'https://commons.wikimedia.org/w/api.php';
   const POTD_PAGE = 'https://commons.wikimedia.org/wiki/Commons:Picture_of_the_day';
-  const CACHE_PREFIX = 'fitlpPotdV1:';
+  const CACHE_PREFIX = 'fitlpPotdV2:';
   let loadedDate = '';
 
   const style = document.createElement('style');
@@ -55,7 +55,30 @@
     if(!value) return '';
     const el = document.createElement('div');
     el.innerHTML = String(value);
+    el.querySelectorAll('style,script,noscript').forEach(node=>node.remove());
     return (el.textContent || '').replace(/\s+/g,' ').trim();
+  }
+
+  function cleanCaptionText(value, dateKey){
+    let text = stripHtml(value);
+    if(!text) return '';
+
+    // Wikimedia's POTD template can include helper/translation boilerplate after the real caption.
+    // Keep the human-readable sentence and remove those template labels if they appear.
+    const stopMarkers = [
+      `Template:Potd/${dateKey}`,
+      'This is the English translation of the Picture of the day description page',
+      'Descriptions in other languages:',
+      'Potd/'
+    ];
+    for(const marker of stopMarkers){
+      const i = text.indexOf(marker);
+      if(i > 0) text = text.slice(0,i).trim();
+    }
+
+    // Defensive cleanup in case CSS text ever survives a MediaWiki response.
+    text = text.replace(/^.*?\}\s*(?=[A-Z0-9*])/s,'').trim();
+    return text;
   }
 
   async function api(params){
@@ -82,7 +105,18 @@
     try{
       const page = `Template:Potd/${dateKey} (en)`;
       const data = await api({action:'parse',page,prop:'text',disableeditsection:'1'});
-      return stripHtml(data?.parse?.text?.['*'] || data?.parse?.text || '');
+      const raw = data?.parse?.text?.['*'] || data?.parse?.text || '';
+      const container = document.createElement('div');
+      container.innerHTML = String(raw);
+      container.querySelectorAll('style,script,noscript,.potd-description-helper-box').forEach(node=>node.remove());
+      const cleaned = cleanCaptionText(container.innerHTML, dateKey);
+      if(cleaned) return cleaned;
+    }catch(e){}
+
+    // Fallback: expand the documented English POTD caption template directly.
+    try{
+      const expanded = await expand(`{{Potd/${dateKey} (en)}}`);
+      return cleanCaptionText(expanded, dateKey);
     }catch(e){
       return '';
     }
@@ -105,7 +139,7 @@
     if(!info?.thumburl && !info?.url) throw new Error('Picture image unavailable');
 
     const meta = info.extmetadata || {};
-    const caption = (await getCaption(dateKey)) || stripHtml(meta.ImageDescription?.value || meta.ImageDescription?.Value || '');
+    const caption = (await getCaption(dateKey)) || cleanCaptionText(meta.ImageDescription?.value || meta.ImageDescription?.Value || '', dateKey);
     const artist = stripHtml(meta.Artist?.value || meta.Artist?.Value || '');
     const licence = stripHtml(meta.LicenseShortName?.value || meta.LicenseShortName?.Value || meta.UsageTerms?.value || meta.UsageTerms?.Value || '');
     const filePage = info.descriptionurl || `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(filename.replace(/ /g,'_'))}`;
@@ -168,7 +202,7 @@
 
   function writeCache(dateKey,data){
     try{
-      Object.keys(localStorage).filter(k=>k.startsWith(CACHE_PREFIX) && k !== CACHE_PREFIX + dateKey).forEach(k=>localStorage.removeItem(k));
+      Object.keys(localStorage).filter(k=>k.startsWith('fitlpPotd') && k !== CACHE_PREFIX + dateKey).forEach(k=>localStorage.removeItem(k));
       localStorage.setItem(CACHE_PREFIX + dateKey, JSON.stringify(data));
     }catch(e){}
   }
@@ -195,6 +229,5 @@
   }
 
   loadToday();
-  // If the page is left open overnight, notice the date change and load the new picture automatically.
   setInterval(()=>loadToday(false), 5 * 60 * 1000);
 })();
