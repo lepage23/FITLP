@@ -32,4 +32,9 @@
   const factFixScript = document.createElement('script');
   factFixScript.src = 'app-16.js?v=1';
   document.body.appendChild(factFixScript);
+
+  // Load rotating BBC News and Guardian headlines for the workout timer.
+  const newsScript = document.createElement('script');
+  newsScript.src = 'app-17.js?v=1';
+  document.body.appendChild(newsScript);
 })();
