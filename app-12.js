@@ -37,4 +37,9 @@
   const newsScript = document.createElement('script');
   newsScript.src = 'app-17.js?v=1';
   document.body.appendChild(newsScript);
+
+  // Keep fact text readable on the light seasonal themes.
+  const factContrastScript = document.createElement('script');
+  factContrastScript.src = 'app-19.js?v=1';
+  document.body.appendChild(factContrastScript);
 })();
