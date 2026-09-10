@@ -22,4 +22,9 @@
       speak(COMPLETE_LINE);
     }
   };
+
+  // Load keyboard shortcuts after the existing timer logic has finished initialising.
+  const shortcutScript = document.createElement('script');
+  shortcutScript.src = 'app-13.js';
+  document.body.appendChild(shortcutScript);
 })();
