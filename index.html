@@ -120,6 +120,14 @@
           <button class="ghost" id="shuffleBtn">Shuffle</button>
           <button class="secondary" id="startWorkoutBtn">Start workout</button>
         </div>
+        <div class="workout-export">
+          <button class="ghost wide" type="button" id="generateWorkoutListBtn">Generate workout list.txt</button>
+          <div class="workout-export-box hidden" id="workoutExportBox">
+            <textarea id="workoutExportText" readonly aria-label="Generated workout list"></textarea>
+            <button class="primary wide" type="button" id="copyWorkoutListBtn">Copy workout list</button>
+            <div class="workout-copy-status" id="workoutCopyStatus" role="status" aria-live="polite"></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -199,5 +207,6 @@
 <script src="app-24.js?v=1"></script>
 <script src="app-25.js?v=1"></script>
 <script src="app-26.js?v=1"></script>
+<script src="app-27.js?v=1"></script>
 </body>
 </html>
