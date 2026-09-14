@@ -58,6 +58,13 @@ textarea { min-height:78px; resize:vertical; }
 .pill { font-size:10px; color:#b8c0cc; border:1px solid #343a46; padding:4px 7px; border-radius:999px; white-space:nowrap; }
 .actions { display:flex; gap:9px; margin-top:14px; }
 .actions button { flex:1; }
+.reroll-exercise-btn { width:38px; height:38px; flex:0 0 38px; display:grid; place-items:center; border-radius:11px; background:#292238; color:#efe9ff; border:1px solid #493d63; font-size:20px; line-height:1; }
+.reroll-exercise-btn:hover { background:#352b49; }
+.reroll-exercise-btn:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.workout-export { border-top:1px solid var(--line); margin-top:16px; padding-top:16px; }
+.workout-export-box { margin-top:10px; }
+.workout-export-box textarea { min-height:250px; line-height:1.45; resize:vertical; }
+.workout-copy-status { min-height:18px; margin-top:7px; color:var(--work); font-size:12px; }
 #timerScreen { display:none; min-height:100vh; }
 .timer-shell { width:min(560px,100%); margin:0 auto; padding:26px 18px 38px; text-align:center; }
 .timer-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:38px; }
@@ -102,4 +109,7 @@ textarea { min-height:78px; resize:vertical; }
   .format-btn:last-child { grid-column:1 / -1; }
   .app { padding-top:14px; }
   .timer-head { margin-bottom:28px; }
+  #workoutList .exercise-row { grid-template-columns:34px minmax(0,1fr) 38px; }
+  #workoutList .exercise-row.has-img { grid-template-columns:34px 68px minmax(0,1fr) 38px !important; }
+  #workoutList .exercise-row .pill { display:none; }
 }
