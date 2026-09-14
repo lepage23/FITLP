@@ -75,7 +75,7 @@ function generateWorkout() {
   const plan = estimatePlan(selectedFormat,duration,warmup);
   const exercises = chooseExercises(plan.stations,equipment,focus,must,avoid,lowImpact,includeFocusTags,avoidFocusTags);
 
-  currentWorkout = { format:selectedFormat, equipmentText, equipment, duration, focus, warmup, plan, exercises, avoid, includeFocus:[...includeFocusTags], avoidFocus:[...avoidFocusTags], voice:$("voiceCues").checked };
+  currentWorkout = { format:selectedFormat, equipmentText, equipment, duration, focus, warmup, plan, exercises, avoid, lowImpact, includeFocus:[...includeFocusTags], avoidFocus:[...avoidFocusTags], voice:$("voiceCues").checked };
   buildQueueFromWorkout();
   renderPreview();
   savePrefs();
