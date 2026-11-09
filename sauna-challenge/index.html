@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101412">
+  <title>The Sauna Showdown</title>
+  <style>
+    :root{--bg:#101412;--panel:#191f1c;--panel2:#202824;--line:#303a34;--text:#f1f1e9;--muted:#a0aaa2;--lime:#c7f36b;--orange:#ff9c5b;--red:#ff746c;--radius:22px;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -5%,#273126 0,transparent 34%),var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--lime)}.wrap{max-width:1120px;margin:auto;padding:34px 22px 64px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:42px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.04em}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--lime);color:#14200e;font-size:20px}.tag{color:var(--muted);font-size:13px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:26px;align-items:end;margin-bottom:28px}.eyebrow{color:var(--lime);font:700 12px var(--mono);letter-spacing:.14em;text-transform:uppercase}.hero h1{font-size:clamp(38px,7vw,76px);line-height:.98;letter-spacing:-.065em;margin:12px 0 18px;max-width:720px}.hero p{max-width:610px;color:#c3cbc4;margin:0}.prize{padding:20px 22px;border:1px solid #4a5548;background:linear-gradient(135deg,#222d23,#18201a);border-radius:var(--radius)}.prize small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700}.prize strong{display:block;font-size:22px;margin-top:6px}.prize span{display:block;color:var(--lime);font-size:13px;margin-top:5px}.status-line{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 26px}.pill{border:1px solid var(--line);background:#171c19;border-radius:999px;padding:8px 12px;color:#c7d0c7;font-size:12px}.pill b{color:var(--text)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:linear-gradient(145deg,var(--panel),#161b18);border:1px solid var(--line);border-radius:var(--radius);padding:22px}.scoreboard{grid-column:1/-1}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}.section-head h2{margin:0;font-size:18px;letter-spacing:-.02em}.sub{color:var(--muted);font-size:13px;margin:4px 0 0}.leaders{display:grid;grid-template-columns:1fr 1fr;gap:14px}.person{padding:19px;border-radius:17px;background:var(--panel2);border:1px solid #354039;position:relative;overflow:hidden}.person::after{content:"";position:absolute;right:-30px;top:-60px;width:120px;height:120px;border-radius:50%;background:var(--wash);filter:blur(4px);opacity:.1}.person.connor{--accent:var(--lime);--wash:var(--lime)}.person.joe{--accent:var(--orange);--wash:var(--orange)}.person-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}.person-name{font-weight:750;font-size:18px}.score{font:800 28px var(--mono);color:var(--accent);letter-spacing:-.07em}.score-label{font-size:10px;color:var(--muted);letter-spacing:.09em;text-transform:uppercase}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}.stat label{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:17px;font-variant-numeric:tabular-nums}.stat .change{display:block;color:var(--accent);font-size:11px}.empty{color:var(--muted);font-size:13px}.chart{height:94px;margin-top:10px}.chart svg{width:100%;height:100%;overflow:visible}.chart .base{stroke:#465149;stroke-width:1;stroke-dasharray:3 5}.chart .line{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.chart .dot{fill:var(--accent)}.chart-label{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-top:-2px}.entry-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:16px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field{margin-bottom:13px}.field label{display:block;font-size:12px;color:#c4cdc5;margin-bottom:6px}.field input,.field select{width:100%;background:#101512;border:1px solid #39443c;border-radius:11px;color:var(--text);padding:11px 12px;outline:none}.field input:focus,.field select:focus{border-color:var(--lime);box-shadow:0 0 0 3px #c7f36b22}.hint{font-size:11px;color:var(--muted);margin-top:5px}.btn{border:0;border-radius:11px;background:var(--lime);color:#11190c;font-weight:800;padding:11px 16px}.btn.secondary{background:#28312b;color:var(--text);border:1px solid #3b463f}.btn.danger{background:transparent;color:var(--red);border:1px solid #653c3a;padding:5px 8px;font-size:11px}.actions{display:flex;flex-wrap:wrap;gap:9px}.feedback{min-height:20px;margin-top:8px;font-size:12px;color:var(--lime)}.tool-card{display:flex;flex-direction:column;justify-content:space-between}.tool-card p{color:var(--muted);font-size:13px;margin:0 0 17px}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;font-size:13px;min-width:510px}.table th{text-align:left;color:var(--muted);font-weight:600;font-size:11px;padding:0 10px 10px}.table td{border-top:1px solid #303a34;padding:12px 10px;font-variant-numeric:tabular-nums}.table tr:first-child td{border-top:1px solid #303a34}.name-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--lime);margin-right:7px}.name-dot.joe{background:var(--orange)}.fineprint{margin:20px 2px 0;color:#87928a;font-size:11px}.toast{position:fixed;right:20px;bottom:20px;background:#eaf4dc;color:#172013;padding:12px 16px;border-radius:12px;font-weight:700;box-shadow:0 15px 44px #0008;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}.file-input{display:none}
+    @media(max-width:760px){.wrap{padding:22px 15px 45px}.topbar{margin-bottom:30px}.hero{grid-template-columns:1fr;gap:18px}.hero h1{font-size:54px}.grid,.entry-grid{grid-template-columns:1fr}.scoreboard{grid-column:auto}.card{padding:18px}.leaders{grid-template-columns:1fr}.tag{max-width:120px;text-align:right}.prize strong{font-size:20px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">↘</span><span>THE SAUNA SHOWDOWN</span></div>
+      <div class="tag">Connor vs Joe · Christmas 2026</div>
+    </header>
+    <section class="hero">
+      <div><div class="eyebrow">The belly-down challenge</div><h1>Earn the<br>sauna.</h1><p>Two lifters. One all-bells-and-whistles sauna session at Beach Box Brighton. Track your Monday weigh-ins and waist measurements, then let the score settle it.</p></div>
+      <aside class="prize"><small>The loser pays</small><strong>Beach Box Sauna</strong><span>Brighton · all bells and whistles</span></aside>
+    </section>
+    <div class="status-line"><div class="pill">Weekly weigh-in <b>Monday morning</b></div><div class="pill">Final weigh-in <b>Monday 21 December</b></div><div class="pill">Challenge ends <b>Christmas Day</b></div></div>
+    <section class="grid">
+      <div class="card scoreboard">
+        <div class="section-head"><div><h2>The leaderboard</h2><p class="sub">Waist loss counts for 60%. Bodyweight loss counts for 40%.</p></div><div class="pill" id="leader-pill">Waiting for weigh-in</div></div>
+        <div class="leaders" id="leaders"></div>
+      </div>
+    </section>
+    <section class="entry-grid">
+      <div class="card">
+        <div class="section-head"><div><h2>Log a Monday</h2><p class="sub">Enter one person’s weight and waist for a weigh-in date.</p></div></div>
+        <form id="entry-form">
+          <div class="field"><label for="person">Who’s weighing in?</label><select id="person" required><option value="connor">Connor</option><option value="joe">Joe Cooke</option></select></div>
+          <div class="field"><label for="date">Weigh-in date</label><select id="date" required></select><div class="hint">Use the same Monday morning routine each week.</div></div>
+          <div class="form-row">
+            <div class="field"><label for="weight">Weight (kg)</label><input id="weight" type="number" min="35" max="250" step="0.1" inputmode="decimal" placeholder="e.g. 99.4" required></div>
+            <div class="field"><label for="waist">Waist (inches)</label><input id="waist" type="number" min="20" max="80" step="0.1" inputmode="decimal" placeholder="e.g. 42.5" required></div>
+          </div>
+          <button class="btn" type="submit">Save weigh-in</button><div id="feedback" class="feedback" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="card tool-card">
+        <div><div class="section-head"><div><h2>Share the score</h2><p class="sub">A simple handover keeps you both in sync.</p></div></div><p>Entries stay in this browser. Export the challenge file after a weigh-in and send it to the other person. They can import it here to update their scoreboard. The file contains both people’s measurements.</p></div>
+        <div class="actions"><button class="btn secondary" id="export-btn" type="button">Export challenge file</button><button class="btn secondary" id="import-btn" type="button">Import file</button><input class="file-input" id="import-file" type="file" accept=".json,application/json"></div>
+        <div id="sync-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+    <section class="card" style="margin-top:16px">
+      <div class="section-head"><div><h2>Weigh-in history</h2><p class="sub">You can replace a saved entry by saving that person and date again.</p></div></div>
+      <div class="table-wrap"><table class="table"><thead><tr><th>Monday</th><th>Person</th><th>Weight</th><th>Waist</th><th>Score</th><th></th></tr></thead><tbody id="history"></tbody></table></div>
+      <div id="history-empty" class="empty">No entries yet. Add your starting measurements to begin.</div>
+    </section>
+    <p class="fineprint">Scoring: 60% × percentage of starting waist lost + 40% × percentage of starting bodyweight lost. The first saved entry is each person’s baseline. Weigh in after the loo and before food or drink. Measure at the navel, relaxed, with the tape level and not pulled tight. Data is saved on this device; use the export and import buttons to share it.</p>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script>
+    const KEY='sauna-showdown-2026-v1';
+    const PEOPLE={connor:{name:'Connor',cls:'connor'},joe:{name:'Joe Cooke',cls:'joe'}};
+    const DATES=['2026-11-09','2026-11-16','2026-11-23','2026-11-30','2026-12-07','2026-12-14','2026-12-21'];
+    let entries=load();
+    const $=s=>document.querySelector(s);
+    function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(v)?v.filter(valid):[]}catch{return []}}
+    function valid(e){return e&&PEOPLE[e.person]&&/^\d{4}-\d{2}-\d{2}$/.test(e.date)&&Number.isFinite(+e.weight)&&Number.isFinite(+e.waist)}
+    function persist(){localStorage.setItem(KEY,JSON.stringify(entries))}
+    function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    function prettyDate(d){return new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'})}
+    function getPersonEntries(id){return entries.filter(e=>e.person===id).sort((a,b)=>a.date.localeCompare(b.date))}
+    function stats(id){const a=getPersonEntries(id);if(!a.length)return null;const base=a[0],last=a[a.length-1];const weightPct=(base.weight-last.weight)/base.weight*100;const waistPct=(base.waist-last.waist)/base.waist*100;return{base,last,weightPct,waistPct,score:.6*waistPct+.4*weightPct,weightChange:last.weight-base.weight,waistChange:last.waist-base.waist,count:a.length}}
+    function n(v,d=1){return Number(v).toFixed(d)}
+    function signed(v,suffix){return `${v>0?'+':''}${n(v)}${suffix}`}
+    function spark(id,field){const a=getPersonEntries(id);if(a.length<2)return '<div class="empty">Trend appears after the next weigh-in.</div>';const vals=a.map(e=>+e[field]),min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;const points=vals.map((v,i)=>`${(i/(vals.length-1))*100},${12+(1-(v-min)/span)*68}`).join(' ');return `<svg viewBox="0 0 100 88" preserveAspectRatio="none" aria-label="${field} trend"><line class="base" x1="0" y1="80" x2="100" y2="80"/><polyline class="line" points="${points}"/>${vals.map((v,i)=>`<circle class="dot" cx="${(i/(vals.length-1))*100}" cy="${12+(1-(v-min)/span)*68}" r="2.2"/>`).join('')}</svg>`}
+    function render(){
+      const cards=Object.keys(PEOPLE).map(id=>{const p=PEOPLE[id],s=stats(id);return `<article class="person ${p.cls}"><div class="person-top"><div><div class="person-name">${p.name}</div><div class="score-label">${s?`Last weigh-in · ${prettyDate(s.last.date)}`:'Waiting for first weigh-in'}</div></div><div style="text-align:right"><div class="score">${s?n(s.score)+'%':'—'}</div><div class="score-label">challenge score</div></div></div>${s?`<div class="stats"><div class="stat"><label>Weight</label><strong>${n(s.last.weight)} kg</strong><span class="change">${signed(s.weightChange,' kg')}</span></div><div class="stat"><label>Waist</label><strong>${n(s.last.waist)} in</strong><span class="change">${signed(s.waistChange,' in')}</span></div><div class="stat"><label>Monday logs</label><strong>${s.count}</strong><span class="change">of 7 weigh-ins</span></div></div><div class="chart">${spark(id,'waist')}</div><div class="chart-label"><span>Waist trend</span><span>${n(s.base.waist)} → ${n(s.last.waist)} in</span></div>`:'<div class="stats"><div class="stat"><label>Starting weight</label><strong>—</strong></div><div class="stat"><label>Starting waist</label><strong>—</strong></div><div class="stat"><label>Monday logs</label><strong>0</strong></div></div><p class="empty">Add the starting weigh-in to set the baseline.</p>'}</article>`}).join('');
+      $('#leaders').innerHTML=cards;
+      const ss=Object.keys(PEOPLE).map(id=>[id,stats(id)]).filter(x=>x[1]);let label='Waiting for weigh-in';if(ss.length===2){const diff=ss[0][1].score-ss[1][1].score;label=Math.abs(diff)<.01?'It’s a dead heat':`${PEOPLE[diff>0?ss[0][0]:ss[1][0]].name} is ahead`}$('#leader-pill').textContent=label;
+      const body=$('#history');const sorted=[...entries].sort((a,b)=>b.date.localeCompare(a.date)||a.person.localeCompare(b.person));body.innerHTML=sorted.map(e=>{const s=stats(e.person);const scoreAt=(getPersonEntries(e.person).filter(x=>x.date<=e.date));let sc='—';if(scoreAt.length){const b=scoreAt[0],l=scoreAt.at(-1);sc=n(.6*((b.waist-l.waist)/b.waist*100)+.4*((b.weight-l.weight)/b.weight*100))+'%'}return `<tr><td>${prettyDate(e.date)} 2026</td><td><span class="name-dot ${PEOPLE[e.person].cls}"></span>${PEOPLE[e.person].name}</td><td>${n(e.weight)} kg</td><td>${n(e.waist)} in</td><td>${sc}</td><td><button class="btn danger" data-delete="${esc(e.person+'|'+e.date)}" type="button">Remove</button></td></tr>`}).join('');
+      $('#history-empty').style.display=entries.length?'none':'block';
+      document.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>{const [person,date]=b.dataset.delete.split('|');entries=entries.filter(e=>!(e.person===person&&e.date===date));persist();render()}));
+    }
+    function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2300)}
+    const dateSel=$('#date');DATES.forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=new Date(d+'T12:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});dateSel.append(o)});
+    $('#entry-form').addEventListener('submit',ev=>{ev.preventDefault();const e={person:$('#person').value,date:dateSel.value,weight:+$('#weight').value,waist:+$('#waist').value};if(!valid(e))return;entries=entries.filter(x=>!(x.person===e.person&&x.date===e.date));entries.push(e);entries.sort((a,b)=>a.date.localeCompare(b.date));persist();render();$('#feedback').textContent='Saved. Export the challenge file to share this update.';toast('Monday weigh-in saved')});
+    $('#export-btn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'sauna-showdown',version:1,exportedAt:new Date().toISOString(),entries},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sauna-showdown-data.json';a.click();URL.revokeObjectURL(a.href);$('#sync-feedback').textContent='File exported. Send it to the other person to import.'});
+    $('#import-btn').addEventListener('click',()=>$('#import-file').click());
+    $('#import-file').addEventListener('change',async ev=>{const f=ev.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(data.app!=='sauna-showdown'||!Array.isArray(data.entries))throw Error('That does not look like a Sauna Showdown file.');const map=new Map(entries.map(e=>[e.person+'|'+e.date,e]));data.entries.filter(valid).forEach(e=>map.set(e.person+'|'+e.date,e));entries=[...map.values()].sort((a,b)=>a.date.localeCompare(b.date));persist();render();$('#sync-feedback').textContent=`Imported and merged ${data.entries.length} entries.`;toast('Challenge file imported')}catch(err){$('#sync-feedback').textContent=err.message}finally{ev.target.value=''}});
+    render();
+  </script>
+</body>
+</html>
