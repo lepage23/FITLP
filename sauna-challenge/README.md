@@ -11,7 +11,7 @@ A small, phone-friendly tracker for Connor and Joe's Christmas 2026 weight and w
 
 ## Data and sharing
 
-The app stores entries in the current browser's local storage. The GitHub Pages files contain no measurements. After a weigh-in, export the JSON challenge file and send it to the other participant. Importing a file merges entries by person and date, so both people can keep the same scoreboard. Keep the exported file between you, as it includes both people's measurements.
+The starting entries (100kg/43in for Connor and 85.3kg/43in for Joe, dated 9 November 2026) are preloaded in the public dashboard. Later entries stay in the current browser's local storage. After a weigh-in, export the JSON challenge file and send it to the other participant. Importing a file merges entries by person and date, so both people can keep the same scoreboard. Keep the exported file between you, as it includes both people's measurements.
 
 ## Publish
 
