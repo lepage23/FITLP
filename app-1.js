@@ -26,6 +26,12 @@ const EXERCISES = [
   {name:"Kettlebell reverse lunge", eq:"kettlebell", tags:["lower","compound"], target:"8–10 each side", impact:"low"},
   {name:"Kettlebell one-arm row", eq:"kettlebell", tags:["upper","pull","compound"], target:"10–12 each arm", impact:"low"},
   {name:"Kettlebell shoulder press", eq:"kettlebell", tags:["upper","push"], target:"8–10 each arm", impact:"low"},
+  {name:"Kettlebell floor press", eq:"kettlebell", tags:["upper","push","compound"], target:"8–12 each arm", impact:"low"},
+  {name:"Half-kneeling kettlebell press", eq:"kettlebell", tags:["upper","push","core"], target:"8–10 each arm", impact:"low"},
+  {name:"Kettlebell push press", eq:"kettlebell", tags:["upper","push","cardio","compound"], target:"6–10 each arm", impact:"medium"},
+  {name:"Kettlebell clean and press", eq:"kettlebell", tags:["upper","push","pull","cardio","compound"], target:"6–8 each arm", impact:"medium"},
+  {name:"Kettlebell pullover", eq:"kettlebell", tags:["upper","pull","core"], target:"8–12 reps", impact:"low"},
+  {name:"Kettlebell tricep extension", eq:"kettlebell", tags:["upper","push","arms"], target:"8–12 reps", impact:"low"},
   {name:"Kettlebell halo", eq:"kettlebell", tags:["upper","core"], target:"6–8 each direction", impact:"low"},
   {name:"Kettlebell high pull", eq:"kettlebell", tags:["upper","cardio","compound"], target:"8–12 each arm", impact:"medium"},
 
