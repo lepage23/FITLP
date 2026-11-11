@@ -4,7 +4,7 @@
 (function(){
   const COMMONS='https://commons.wikimedia.org/w/api.php';
   const OPENVERSE='https://api.openverse.org/v1/images/';
-  const CACHE='fitlpMediaV1:';
+  const CACHE='fitlpMediaV2:';
   const CACHE_MS=14*24*60*60*1000;
   const ALLOWED_LICENSES=new Set(['cc0','pdm','by','by-sa']);
   const mem=new Map(),pending=new Map();
@@ -28,6 +28,12 @@
     'Kettlebell reverse lunge':{q:'kettlebell reverse lunge',g:[['kettlebell','lunge'],['reverse','lunge']]},
     'Kettlebell one-arm row':{q:'kettlebell one arm row',g:[['kettlebell','row']]},
     'Kettlebell shoulder press':{q:'kettlebell shoulder press',g:[['kettlebell','press']]},
+    'Kettlebell floor press':{q:'kettlebell floor press',g:[['kettlebell','floor','press'],['floor','press']]},
+    'Half-kneeling kettlebell press':{q:'half kneeling kettlebell press',g:[['kneeling','kettlebell','press'],['half','kneeling','press']]},
+    'Kettlebell push press':{q:'kettlebell push press',g:[['kettlebell','push','press'],['push','press']]},
+    'Kettlebell clean and press':{q:'kettlebell clean and press',g:[['kettlebell','clean','press'],['clean','press']]},
+    'Kettlebell pullover':{q:'kettlebell pullover exercise',g:[['kettlebell','pullover'],['kettlebell','pull','over']]},
+    'Kettlebell tricep extension':{q:'kettlebell tricep extension',g:[['kettlebell','tricep','extension'],['tricep','extension']]},
     'Kettlebell halo':{q:'kettlebell halo',g:[['kettlebell','halo']]},
     'Kettlebell high pull':{q:'kettlebell high pull',g:[['kettlebell','high','pull']]},
     'Push ups':{q:'push up exercise',g:[['push','up'],['pushup']]},
